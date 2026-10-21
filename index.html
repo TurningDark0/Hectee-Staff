@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Apply to join the Hectee Discord staff team.">
+  <title>HECTEE — Staff Applications</title>
+  <style>
+    :root {
+      --bg: #080808; --panel: rgba(20,20,20,.86); --gold: #d7b15b;
+      --gold2: #f4dfa0; --muted: #aaa7a0; --line: rgba(215,177,91,.25);
+      --white: #f7f4ec;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--white);
+      background:
+        radial-gradient(ellipse at 12% 10%, rgba(132,94,27,.18), transparent 34%),
+        radial-gradient(ellipse at 90% 42%, rgba(215,177,91,.09), transparent 33%),
+        linear-gradient(135deg, #050505 0%, #10100e 50%, #050505 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.16;
+      background-image: radial-gradient(rgba(255,255,255,.22) .6px, transparent .6px);
+      background-size: 5px 5px; mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+    .orb { position:fixed; width:340px; height:340px; border-radius:50%; filter:blur(90px); opacity:.11; pointer-events:none; }
+    .orb.one { background:#c79b3d; top:20%; left:-220px; }
+    .orb.two { background:#8c6b2d; right:-220px; bottom:5%; }
+    .wrap { width:min(1100px, calc(100% - 36px)); margin:auto; position:relative; z-index:1; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:24px 0; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .brand img { width:48px; height:48px; border-radius:15px; object-fit:cover; border:1px solid var(--line); box-shadow:0 0 24px #d7b15b16; }
+    .brand strong { letter-spacing:.16em; font-size:15px; }
+    .brand small { display:block; color:var(--muted); font-size:10px; letter-spacing:.19em; margin-top:4px; }
+    .status { border:1px solid var(--line); color:#dfc783; background:#d7b15b0b; border-radius:999px; padding:9px 13px; font-size:12px; letter-spacing:.04em; }
+    .status::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:#d7b15b; margin-right:8px; box-shadow:0 0 10px #d7b15b; }
+    .hero { text-align:center; padding:76px 0 48px; }
+    .eyebrow { color:var(--gold); letter-spacing:.28em; font-size:11px; font-weight:800; }
+    h1 { font-size:clamp(38px, 7vw, 76px); line-height:1.02; letter-spacing:-.055em; margin:20px auto 18px; max-width:850px; }
+    h1 span { color:var(--gold2); text-shadow:0 0 38px #d7b15b1a; }
+    .intro { color:#bcbab3; max-width:650px; margin:0 auto; line-height:1.8; font-size:clamp(14px, 2vw, 17px); }
+    .actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:30px; }
+    button, .button { border:0; font:inherit; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:9px; border-radius:15px; padding:15px 23px; font-weight:800; transition:transform .2s, box-shadow .2s, background .2s; }
+    button:hover, .button:hover { transform:translateY(-2px); }
+    .primary { color:#171208; background:linear-gradient(135deg,#f0d58a,#bd913a); box-shadow:0 8px 30px #c69b3c24; }
+    .primary:hover { box-shadow:0 12px 38px #c69b3c3d; }
+    .secondary { color:#eee5ce; border:1px solid var(--line); background:#ffffff06; }
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:42px 0 72px; }
+    .card { background:linear-gradient(145deg,rgba(25,25,24,.92),rgba(12,12,12,.88)); border:1px solid var(--line); border-radius:24px; padding:24px; box-shadow:0 18px 55px #0004; }
+    .feature-icon { width:43px; height:43px; display:grid; place-items:center; color:var(--gold2); border:1px solid var(--line); border-radius:14px; background:#d7b15b0c; font-size:20px; }
+    h2 { font-size:19px; margin:17px 0 9px; }
+    .card p { color:var(--muted); line-height:1.7; font-size:14px; margin:0; }
+    .values { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; margin-bottom:70px; }
+    .section-title { font-size:clamp(27px,4vw,39px); line-height:1.12; margin:0 0 15px; letter-spacing:-.035em; }
+    .section-title span { color:var(--gold2); }
+    .list { display:grid; gap:13px; margin-top:22px; }
+    .list-item { display:flex; gap:12px; color:#d1cec5; line-height:1.55; font-size:14px; }
+    .tick { color:var(--gold); font-weight:900; }
+    .quote { display:flex; flex-direction:column; justify-content:center; min-height:260px; background:radial-gradient(ellipse at top right,#6b51201c,transparent 60%),#121211; }
+    .quote-mark { color:var(--gold); font-size:36px; line-height:1; }
+    .quote blockquote { margin:12px 0 18px; font-size:22px; line-height:1.45; font-weight:650; letter-spacing:-.02em; }
+    .quote small { color:var(--muted); letter-spacing:.12em; font-size:10px; }
+    .cta { text-align:center; padding:36px 24px; margin-bottom:60px; background:linear-gradient(120deg,#17140e,#11110f 65%); }
+    .cta p { max-width:540px; margin:0 auto; }
+    footer { border-top:1px solid #ffffff12; padding:24px 0 34px; color:#77756f; font-size:12px; display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    footer strong { color:#c5a75f; letter-spacing:.15em; }
+    .modal-backdrop { display:none; position:fixed; inset:0; z-index:10; padding:18px; background:#000b; backdrop-filter:blur(12px); align-items:center; justify-content:center; }
+    .modal-backdrop.show { display:flex; }
+    .modal { width:min(520px,100%); max-height:min(90vh,760px); overflow:auto; background:linear-gradient(145deg,#191918,#0d0d0c); border:1px solid #80652c88; border-radius:27px; padding:26px; box-shadow:0 30px 100px #000b; animation:rise .22s ease-out; }
+    @keyframes rise { from { opacity:0; transform:translateY(12px) scale(.985); } to { opacity:1; transform:none; } }
+    .modal-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:22px; }
+    .modal-top h2 { margin:0; font-size:23px; }
+    .close { background:#ffffff0b; color:#eee; border:1px solid #ffffff18; border-radius:12px; padding:8px 12px; }
+    .step { display:none; } .step.active { display:block; }
+    .step-label { color:var(--gold); font-size:10px; letter-spacing:.2em; font-weight:800; margin-bottom:10px; }
+    .step h3 { font-size:25px; margin:0 0 9px; }
+    .hint { color:var(--muted); font-size:13px; line-height:1.65; margin:0 0 20px; }
+    label { display:block; color:#e7e0cf; font-size:13px; font-weight:700; margin:16px 0 8px; }
+    input, select, textarea { width:100%; border:1px solid #ffffff20; outline:none; background:#090909; color:#f6f0e2; padding:14px 14px; border-radius:13px; font:inherit; }
+    input:focus, select:focus, textarea:focus { border-color:#cba54f; box-shadow:0 0 0 3px #d7b15b16; }
+    .choice-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+    .choice { padding:15px; border:1px solid #ffffff20; border-radius:14px; color:#e7e1d4; background:#ffffff05; text-align:left; font-weight:700; }
+    .choice.selected { border-color:var(--gold); background:#d7b15b15; color:var(--gold2); }
+    .modal-actions { display:flex; justify-content:space-between; gap:10px; margin-top:22px; }
+    .modal-actions button { flex:1; }
+    .error { color:#ff9999; font-size:12px; min-height:17px; margin-top:9px; }
+    .notice { color:#bdb7a7; background:#ffffff07; border:1px solid #ffffff13; padding:13px; border-radius:13px; font-size:12px; line-height:1.6; margin-top:15px; }
+    .success { text-align:center; padding:16px 2px 5px; }
+    .success .big { font-size:45px; color:var(--gold2); }
+    .success h3 { font-size:26px; }
+    .success p { color:var(--muted); line-height:1.7; font-size:14px; }
+    @media(max-width:700px) {
+      .hero { padding:55px 0 30px; }
+      .features { grid-template-columns:1fr; margin:28px 0 48px; }
+      .card { padding:21px; }
+      .values { grid-template-columns:1fr; margin-bottom:48px; }
+      .status { font-size:10px; padding:8px 10px; }
+      .brand small { font-size:8px; }
+      header { padding:18px 0; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#" aria-label="Hectee home">
+        <img src="assets/hectee-icon.jpg" alt="Hectee server icon">
+        <span><strong>HECTEE</strong><small>STAFF APPLICATIONS</small></span>
+      </a>
+      <div class="status">RECRUITMENT PORTAL</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">THE NEXT CHAPTER STARTS WITH YOU</div>
+        <h1>LEAD WITH <span>HONOUR.</span><br>BUILD THE LEGACY.</h1>
+        <p class="intro">Hectee is built by its community. We're looking for mature, active, and trustworthy people who want to help make our server a better place for everyone.</p>
+        <div class="actions">
+          <button class="primary" id="openApply">APPLY FOR STAFF <span>↗</span></button>
+          <a class="button secondary" href="#expectations">WHAT WE EXPECT ↓</a>
+        </div>
+      </section>
+
+      <section class="features" aria-label="Staff qualities">
+        <article class="card"><div class="feature-icon">♜</div><h2>Lead by Example</h2><p>Be respectful, stay calm under pressure, and help create a welcoming space for every member.</p></article>
+        <article class="card"><div class="feature-icon">◇</div><h2>Earn the Trust</h2><p>Staff is a responsibility, not a status symbol. Fair decisions and honesty matter more than rank.</p></article>
+        <article class="card"><div class="feature-icon">✦</div><h2>Make an Impact</h2><p>Support members, encourage positive conversations, and help Hectee keep growing stronger.</p></article>
+      </section>
+
+      <section class="values" id="expectations">
+        <div class="card">
+          <div class="eyebrow">BEFORE YOU APPLY</div>
+          <h2 class="section-title">THE STANDARD IS <span>YOU.</span></h2>
+          <p class="hint">A great staff member is consistent, helpful, and fair. You don't need to know everything — you need to be willing to learn and show up.</p>
+          <div class="list">
+            <div class="list-item"><span class="tick">✓</span><span>Be a member of the Hectee Discord server.</span></div>
+            <div class="list-item"><span class="tick">✓</span><span>Communicate respectfully and follow server rules.</span></div>
+            <div class="list-item"><span class="tick">✓</span><span>Be active, responsible, and open to feedback.</span></div>
+            <div class="list-item"><span class="tick">✓</span><span>Never misuse permissions or share private staff information.</span></div>
+          </div>
+        </div>
+        <div class="card quote">
+          <div class="quote-mark">“</div>
+          <blockquote>Rank makes you visible. Your actions make you a leader.</blockquote>
+          <small>THE HECTEE STAFF PRINCIPLE</small>
+        </div>
+      </section>
+
+      <section class="card cta">
+        <div class="eyebrow">YOUR COMMUNITY NEEDS PEOPLE LIKE YOU</div>
+        <h2 class="section-title">READY TO STEP <span>UP?</span></h2>
+        <p class="hint">Start your application in a few quick steps. Make sure you're already in the Hectee server before continuing.</p>
+        <button class="primary" id="openApplyBottom">START APPLICATION ↗</button>
+      </section>
+    </main>
+
+    <footer><span><strong>HECTEE</strong> · STAFF RECRUITMENT</span><span>Built for community. Powered by responsibility.</span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-top"><h2 id="modalTitle">Staff Application</h2><button class="close" id="closeModal" aria-label="Close application">✕</button></div>
+      <div class="step active" id="step1">
+        <div class="step-label">STEP 01 / 03</div>
+        <h3>Let's meet you.</h3>
+        <p class="hint">Enter your Discord username exactly as it appears on your profile.</p>
+        <label for="username">Discord username</label>
+        <input id="username" autocomplete="off" maxlength="80" placeholder="e.g. yourusername" required>
+        <div class="error" id="usernameError"></div>
+        <div class="modal-actions"><span></span><button class="primary" id="next1">CONTINUE →</button></div>
+      </div>
+      <div class="step" id="step2">
+        <div class="step-label">STEP 02 / 03</div>
+        <h3>Are you in Hectee?</h3>
+        <p class="hint">You must already be a member of the Hectee Discord server to apply.</p>
+        <div class="choice-row">
+          <button class="choice" id="yesMember">✓ Yes, I'm a member</button>
+          <button class="choice" id="noMember">✕ No, not yet</button>
+        </div>
+        <div class="error" id="memberError"></div>
+        <div class="notice">Membership is self-reported in this demo. For real verification, the site needs a Discord OAuth2 sign-in and a secure server-side integration or a verification bot.</div>
+        <div class="modal-actions"><button class="secondary" id="back2">← BACK</button><button class="primary" id="next2">CONTINUE →</button></div>
+      </div>
+      <div class="step" id="step3">
+        <div class="step-label">STEP 03 / 03</div>
+        <h3>Tell us why you fit.</h3>
+        <p class="hint">A thoughtful answer helps the staff team understand your motivation.</p>
+        <label for="role">Which staff role interests you?</label>
+        <select id="role"><option value="">Choose a role</option><option>Moderator</option><option>Support Team</option><option>Event Team</option><option>Any suitable role</option></select>
+        <label for="reason">Why do you want to join the staff team?</label>
+        <textarea id="reason" rows="4" maxlength="1000" placeholder="Tell us how you'd help the Hectee community..."></textarea>
+        <div class="error" id="finalError"></div>
+        <div class="modal-actions"><button class="secondary" id="back3">← BACK</button><button class="primary" id="submitApp">FINISH APPLICATION ↗</button></div>
+      </div>
+      <div class="step" id="stepNo">
+        <div class="success"><div class="big">◇</div><h3>One step before applying.</h3><p>You need to join the Hectee Discord server first. Once you're a member, come back here and start again.</p>
+          <a class="button primary" id="inviteLink" href="https://discord.gg/wUmQzNtcB3" target="_blank" rel="noopener">OPEN DISCORD ↗</a>
+          <div class="notice">Replace the default Discord link in <code>index.html</code> with your real Hectee invite link.</div>
+          <div class="modal-actions"><button class="secondary" id="restartNo">TRY AGAIN</button></div>
+        </div>
+      </div>
+      <div class="step" id="stepDone">
+        <div class="success"><div class="big">✦</div><h3>Application prepared!</h3><p id="doneText">Your application details are ready.</p>
+          <div class="notice">This GitHub Pages demo does not send or save applications. Connect a form backend, Discord bot, or secure API to deliver applications to your staff team.</div>
+          <div class="modal-actions"><button class="secondary" id="copyApp">COPY APPLICATION</button><button class="primary" id="finish">DONE ✓</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Replace this with your actual permanent Hectee Discord invite URL.
+    const HECTEE_INVITE_URL = "https://discord.gg/wUmQzNtcB3";
+    const backdrop = document.getElementById("modalBackdrop");
+    const steps = ["step1","step2","step3","stepNo","stepDone"];
+    const app = { username:"", member:null, role:"", reason:"" };
+    const $ = id => document.getElementById(id);
+    function showStep(id) { steps.forEach(s => $(s).classList.toggle("active", s === id)); }
+    function openModal() { backdrop.classList.add("show"); showStep("step1"); $("username").focus(); }
+    function closeModal() { backdrop.classList.remove("show"); }
+    $("openApply").addEventListener("click", openModal);
+    $("openApplyBottom").addEventListener("click", openModal);
+    $("closeModal").addEventListener("click", closeModal);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+    $("next1").addEventListener("click", () => {
+      const name = $("username").value.trim();
+      if (!name || name.length < 2) { $("usernameError").textContent = "Please enter a valid Discord username."; return; }
+      app.username = name; $("usernameError").textContent = ""; showStep("step2");
+    });
+    $("yesMember").addEventListener("click", () => {
+      app.member = true; $("yesMember").classList.add("selected"); $("noMember").classList.remove("selected"); $("memberError").textContent = "";
+    });
+    $("noMember").addEventListener("click", () => {
+      app.member = false; $("noMember").classList.add("selected"); $("yesMember").classList.remove("selected"); $("memberError").textContent = "";
+    });
+    $("next2").addEventListener("click", () => {
+      if (app.member === null) { $("memberError").textContent = "Choose Yes or No to continue."; return; }
+      if (app.member === false) { $("inviteLink").href = HECTEE_INVITE_URL; showStep("stepNo"); return; }
+      showStep("step3");
+    });
+    $("back2").addEventListener("click", () => showStep("step1"));
+    $("back3").addEventListener("click", () => showStep("step2"));
+    $("restartNo").addEventListener("click", () => { app.member = null; $("yesMember").classList.remove("selected"); $("noMember").classList.remove("selected"); showStep("step2"); });
+    $("submitApp").addEventListener("click", () => {
+      app.role = $("role").value; app.reason = $("reason").value.trim();
+      if (!app.role || app.reason.length < 10) { $("finalError").textContent = "Choose a role and write at least 10 characters about why you want to help."; return; }
+      $("finalError").textContent = "";
+      $("doneText").textContent = "Thanks, " + app.username + ". Your application has been prepared on this device.";
+      showStep("stepDone");
+    });
+    function applicationText() {
+      return "HECTEE STAFF APPLICATION\\nDiscord username: " + app.username + "\\nMember of Hectee: " + (app.member ? "Yes" : "No") + "\\nPreferred role: " + app.role + "\\nWhy I want to join: " + app.reason;
+    }
+    $("copyApp").addEventListener("click", async () => {
+      const text = applicationText();
+      try { await navigator.clipboard.writeText(text); $("copyApp").textContent = "COPIED ✓"; }
+      catch { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); $("copyApp").textContent = "COPIED ✓"; }
+    });
+    $("finish").addEventListener("click", closeModal);
+  </script>
+</body>
+</html>
